@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XplLib", "XplLib\XplLib.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XplService", "XplService\XplService.csproj", "{4680234D-5095-4476-AE76-368104D3CED3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{FD866823-7A87-4D66-82F1-0F11A1C53580}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B10DD6AB-4650-4C1B-9AE1-2205BC72A697}"
 	ProjectSection(SolutionItems) = preProject
-		XplConfig.json = XplConfig.json
+		App.config = App.config
 	EndProjectSection
 EndProject
 Global

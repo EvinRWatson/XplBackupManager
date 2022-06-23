@@ -12,5 +12,15 @@ namespace XplLib.Objects
             SourcePath = entry[2];
             DestinationPath = entry[3];
         }
+
+        public override string ReturnPrintString()
+        {
+            string output = "";
+            output += Number;
+            output += Type;
+            output += SourcePath;
+            output += DestinationPath;
+            return output;
+        }
     }
 }

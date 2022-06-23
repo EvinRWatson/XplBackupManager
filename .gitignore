@@ -1,4 +1,9 @@
-
+XplClient/obj/
+XplClient/bin/
+XplLib/obj/
+XplLib/bin/
+XplService/obj/
+XplService/bin/
 *.v3
 .vs/ProjectSettings.json
 *.sqlite
@@ -76,3 +81,8 @@ XplClient/obj/Debug/net6.0-windows10.0.19041.0/win10-x64/_IsIncrementalBuild
 *.resfiles
 *.ico
 *.i.cs
+.idea/.idea.XplDev/.idea/.name
+*.apk
+XplClient/obj/Debug/net6.0-maccatalyst/maccatalyst-x64/XplClient.AssemblyInfo.cs
+XplClient/obj/Debug/net6.0-maccatalyst/maccatalyst-x64/XplClient.AssemblyInfo.cs
+XplClient/obj/Debug/net6.0-windows10.0.19041.0/win10-x64/XplClient.AssemblyInfo.cs

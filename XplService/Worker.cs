@@ -1,4 +1,9 @@
+using System.Configuration;
+using System.Collections.Specialized;
+using System.Linq.Expressions;
+using System.Threading;
 using XplLib;
+using XplLib.Objects;
 namespace XplService
 {
     public class Worker : BackgroundService
@@ -12,15 +17,21 @@ namespace XplService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (!stoppingToken.IsCancellationRequested)
+            var timer = new PeriodicTimer(TimeSpan.FromSeconds(15));
+            while (await timer.WaitForNextTickAsync() &&  !stoppingToken.IsCancellationRequested)
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-
-                List<String[]> entries = XplLib.Func.ReadEntriesFile();
-                XplLib.Objects.LocalData local = new XplLib.Objects.LocalData(entries[0]);
-
-                _logger.LogInformation($"Read Entry: {entries[1].ToString()}");
-                await Task.Delay(1000, stoppingToken);
+                _logger.LogInformation($"Reading file...");
+                List<String[]> entries = Func.ReadEntriesFile();
+                List<BaseData> entryObjects = Func.ConvertEntriesToObjects(entries);
+                _logger.LogInformation($"Displaying Entries");
+                string entriesOutput = String.Empty;
+                foreach (var entryObject in entryObjects)
+                {
+                    if (entryObject is not null)
+                        entriesOutput += "\t" + entryObject.ReturnPrintString() + "\n";
+                }
+                _logger.LogInformation(entriesOutput);
             }
         }
     }
