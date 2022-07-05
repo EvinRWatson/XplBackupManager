@@ -10,5 +10,7 @@
         protected string Fingerprint { get; set; }
 
         public abstract string ReturnPrintString();
+
+        public static List<BaseData?> GetList() => Func.ConvertEntriesToObjects(Func.ReadEntriesFile());
     }
 }

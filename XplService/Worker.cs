@@ -17,15 +17,13 @@ namespace XplService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var timer = new PeriodicTimer(TimeSpan.FromSeconds(15));
+            var timer = new PeriodicTimer(TimeSpan.FromSeconds(3));
             while (await timer.WaitForNextTickAsync() &&  !stoppingToken.IsCancellationRequested)
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                _logger.LogInformation($"Reading file...");
                 List<String[]> entries = Func.ReadEntriesFile();
-                List<BaseData> entryObjects = Func.ConvertEntriesToObjects(entries);
-                _logger.LogInformation($"Displaying Entries");
-                string entriesOutput = String.Empty;
+                List<BaseData?> entryObjects = Func.ConvertEntriesToObjects(entries);
+                string entriesOutput = "Entries Include:\n";
                 foreach (var entryObject in entryObjects)
                 {
                     if (entryObject is not null)

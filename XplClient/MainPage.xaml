@@ -2,38 +2,41 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XplClient.MainPage">
-			 
-    <ScrollView>
+
+    <ScrollView BackgroundColor="Silver">
         <VerticalStackLayout 
             Spacing="25" 
             Padding="30,0" 
-            VerticalOptions="Center">
+            VerticalOptions="StartAndExpand">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+            <HorizontalStackLayout
+                HorizontalOptions="End">
+
+                <Button 
+                x:Name="RestartService"
+                Text="Restart Service"
+                SemanticProperties.Hint="Opens Configuration Setttings"
+                Clicked="OnRestartService"
+                HorizontalOptions="End" />
+
+                <Button 
+                x:Name="ShowLogs"
+                Text="Show Logs"
+                SemanticProperties.Hint="Opens Log File"
+                Clicked="OnShowLogs"
+                HorizontalOptions="End" />
                 
-            <Label 
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-            
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+                <Button 
+                x:Name="Settings"
+                Text="Settings"
+                SemanticProperties.Hint="Opens Configuration Setttings"
+                Clicked="OnSettingsClicked"
+                HorizontalOptions="End" />
+                
+            </HorizontalStackLayout>
 
-            <Button 
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+            <ListView ItemsSource="{Binding baseDataStrings }"/>
+
 
         </VerticalStackLayout>
     </ScrollView>
